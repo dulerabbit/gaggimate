@@ -271,6 +271,7 @@ void GaggiMateController::handleSerialCommand(char c) {
             ESP_LOGI("Controller", "║  ├─ Pump Power: %.2f", dimmedPump->getPowerTarget());
         }
         ESP_LOGI("Controller", "║  └─ Temperature: %.2f", heater->getSetpoint());
+        ESP_LOGI("Controller", "║");
 
         size_t free = heap_caps_get_free_size(MALLOC_CAP_DEFAULT | MALLOC_CAP_INTERNAL);
         size_t largest = heap_caps_get_largest_free_block(MALLOC_CAP_DEFAULT | MALLOC_CAP_INTERNAL);
