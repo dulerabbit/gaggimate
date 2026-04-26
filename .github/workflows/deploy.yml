@@ -11,6 +11,10 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.TEBI_ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.TEBI_SECRET_KEY }}
+      TEBI_BUCKET: ${{ secrets.TEBI_BUCKET }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4.2.2
@@ -36,16 +40,10 @@ jobs:
       - name: Build firmware
         run: pio run -e display
 
+      - name: Verify Tebi credentials
+        run: echo "Target Bucket ${TEBI_BUCKET}"
+
       - name: Upload firmware to Tebi
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.TEBI_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.TEBI_SECRET_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-          TEBI_BUCKET: ${{ secrets.TEBI_BUCKET }}
         run: |
-          if [ -z "$TEBI_BUCKET" ]; then
-            echo "TEBI_BUCKET secret is empty or missing"
-            exit 1
-          fi
           aws s3 cp .pio/build/display/firmware.bin s3://$TEBI_BUCKET/gaggimate-latest.bin \
-            --endpoint-url http://s3.tebi.io --no-verify-ssl --only-show-errors
+            --endpoint-url https://s3.tebi.io --no-verify-ssl --addressing-style path --region us-east-1
