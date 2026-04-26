@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -38,6 +41,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.TEBI_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.TEBI_SECRET_KEY }}
           AWS_DEFAULT_REGION: us-east-1
+          TEBI_BUCKET: ${{ secrets.TEBI_BUCKET }}
         run: |
-          aws s3 cp .pio/build/display/firmware.bin s3://${{ secrets.TEBI_BUCKET }}/gaggimate-latest.bin \
+          if [ -z "$TEBI_BUCKET" ]; then
+            echo "TEBI_BUCKET secret is empty or missing"
+            exit 1
+          fi
+          aws s3 cp .pio/build/display/firmware.bin s3://$TEBI_BUCKET/gaggimate-latest.bin \
             --endpoint-url https://s3.tebi.io --only-show-errors
