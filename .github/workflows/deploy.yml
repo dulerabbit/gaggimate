@@ -48,4 +48,4 @@ jobs:
             exit 1
           fi
           aws s3 cp .pio/build/display/firmware.bin s3://$TEBI_BUCKET/gaggimate-latest.bin \
-            --endpoint-url https://s3.tebi.io --only-show-errors
+            --endpoint-url https://s3.tebi.io --no-verify-ssl --only-show-errors
