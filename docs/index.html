@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dule Rabbit's Gaggimate Flasher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"
+    ></script>
+    <style>
+      :root {
+        --bg-a: #fff6df;
+        --bg-b: #f2fcff;
+        --ink: #11242e;
+        --muted: #4f6470;
+        --card: rgba(255, 255, 255, 0.88);
+        --edge: rgba(17, 36, 46, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: "Barlow", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(80rem 50rem at 110% -10%, #aee8ff 0%, transparent 48%),
+          radial-gradient(70rem 40rem at -10% 110%, #ffd8a9 0%, transparent 44%),
+          linear-gradient(140deg, var(--bg-a), var(--bg-b));
+        padding: 1.25rem;
+      }
+
+      main {
+        width: min(680px, 100%);
+        text-align: center;
+        padding: clamp(1.5rem, 2.6vw, 2.4rem);
+        border: 1px solid var(--edge);
+        border-radius: 1.1rem;
+        background: var(--card);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 18px 48px rgba(9, 20, 26, 0.14);
+        animation: float-in 500ms ease-out both;
+      }
+
+      h1 {
+        margin: 0 0 0.9rem;
+        font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+        font-size: clamp(1.9rem, 4.4vw, 2.7rem);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        margin: 0 auto;
+        max-width: 52ch;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .cta {
+        margin: 1.35rem 0 1.1rem;
+      }
+
+      .note {
+        font-size: 0.95rem;
+      }
+
+      @keyframes float-in {
+        from {
+          opacity: 0;
+          transform: translateY(14px) scale(0.98);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Dule Rabbit's Gaggimate Flasher</h1>
+      <p>Connect your ESP32-S3 board over USB, then install the latest Gaggimate build in one click.</p>
+      <p class="cta">
+        <esp-web-install-button manifest="./manifest.json"></esp-web-install-button>
+      </p>
+      <p class="note">Keep tinkering, and I'll see you in the next one.</p>
+    </main>
+  </body>
+</html>

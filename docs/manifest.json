@@ -1,0 +1,15 @@
+{
+  "name": "Gaggimate",
+  "version": "latest",
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "https://s3.tebi.io/gaggimate-firmware/gaggimate-latest.bin",
+          "offset": 65536
+        }
+      ]
+    }
+  ]
+}

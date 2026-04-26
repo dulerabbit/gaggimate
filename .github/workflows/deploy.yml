@@ -1,0 +1,43 @@
+name: Deploy Gaggimate
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Cache PlatformIO
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install build tools
+        run: pip install --upgrade platformio awscli
+
+      - name: Build firmware
+        run: pio run -e display
+
+      - name: Upload firmware to Tebi
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.TEBI_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.TEBI_SECRET_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+        run: |
+          aws s3 cp .pio/build/display/firmware.bin s3://${{ secrets.TEBI_BUCKET }}/gaggimate-latest.bin \
+            --endpoint-url https://s3.tebi.io --only-show-errors
