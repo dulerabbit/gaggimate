@@ -1,0 +1,7 @@
+C:/Users/Administrator/.platformio/packages/framework-arduinoespressif32@3.20014.231204/cores/esp32/esp32-hal-uart.c: In function 'uartSetPins':
+C:/Users/Administrator/.platformio/packages/framework-arduinoespressif32@3.20014.231204/cores/esp32/esp32-hal-uart.c:153:9: warning: 'return' with no value, in function returning non-void
+         return;
+         ^~~~~~
+C:/Users/Administrator/.platformio/packages/framework-arduinoespressif32@3.20014.231204/cores/esp32/esp32-hal-uart.c:149:6: note: declared here
+ bool uartSetPins(uint8_t uart_num, int8_t rxPin, int8_t txPin, int8_t ctsPin, int8_t rtsPin)
+      ^~~~~~~~~~~

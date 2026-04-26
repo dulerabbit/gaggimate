@@ -1,0 +1,12 @@
+.pio
+env/
+pcb/**/Gaggimate-backups
+pcb/**/*.kicad_sch_old
+.vscode
+.idea
+node_modules/
+__pycache__
+data/w
+.codebuddy
+src/version.h
+src/display/ui/default/lvgl/project.info

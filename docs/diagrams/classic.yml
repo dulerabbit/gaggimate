@@ -1,0 +1,176 @@
+metadata:
+  title: Gaggia Classic
+
+  template:
+    name: din-6771
+    sheetsize: A3
+
+  templates:
+    - &ferrule
+      type: Crimp ferrule
+    - &jstxh
+      type: JST XH
+      subtype: female
+    - &spade
+      type: 6.35mm Spade
+      subtype: female
+    - &hv
+      gauge: 18 AWG
+    - &lv
+      gauge: 22 AWG
+
+
+connectors:
+  BOARD_HV:
+    <<: *ferrule
+    pinlabels: [PUMP, RELAY, ALT, L, N]
+  BOARD_LV:
+    <<: *jstxh
+    pinlabels: [+3.3V, GND, SSR, GND, BREW, GND, STEAM, GND]
+  DISPLAY:
+    type: Grove Connector
+    pinlabels: [+3.3V, SDA, SCL, GND]
+  SOLID_STATE_RELAY:
+    <<: *ferrule
+    pinlabels: [SIGNAL, GND, IN, OUT]
+  SOCKET:
+    pinlabels: [L, N, EARTH]
+  HEATER:
+    type: Bullet connectors
+    pinlabels: [IN1, IN2, OUT1, OUT2]
+  POWER_SWITCH:
+    type: 6.35mm Female Spade / Piggyback
+    pinlabels: [IN, OUT]
+  BREW_SWITCH:
+    <<: *spade
+    pinlabels: [IN, OUT]
+  STEAM_SWITCH:
+    <<: *spade
+    pinlabels: [IN, OUT]
+  CASE:
+    style: simple
+    type: Case grounding
+    pinlabels: [EARTH]
+  BOILER:
+    style: simple
+    type: Boiler grounding
+    pinlabels: [EARTH]
+  SOLENOID:
+    <<: *spade
+    pinlabels: [L, N, EARTH]
+  PUMP:
+    <<: *spade
+    pinlabels: [L, N]
+  THERMAL_FUSE:
+    pinlabels: [IN, OUT]
+cables:
+  HEATER_BRIDGE:
+    <<: *hv
+    colors: [RD]
+  SSR_CONN:
+    <<: *hv
+    colors: [YE, YE]
+  MAIN_POWER:
+    <<: *hv
+    colors: [GY]
+  LINE:
+    <<: *hv
+    colors: [GY]
+  NEUTRAL:
+    <<: *hv
+    colors: [BU]
+  NEUTRAL_FUSED:
+    <<: *hv
+    colors: [BN]
+  EARTH:
+    <<: *hv
+    colors: [YEGN]
+  SWITCHED:
+    <<: *hv
+    colors: [BK, BK]
+  DISPLAY_PWR:
+    <<: *lv
+    colors: [RD, BK]
+  SSR_SIGNAL:
+    <<: *lv
+    colors: [YE, BK]
+  BUTTONS:
+    <<: *lv
+    colors: [GN, BK, GN, BK]
+connections:
+  -
+    - SOCKET: [1]
+    - MAIN_POWER: [1]
+    - POWER_SWITCH: [1]
+  -
+    - HEATER: [3]
+    - HEATER_BRIDGE: [1]
+    - HEATER: [2]
+  -
+    - POWER_SWITCH: [2]
+    - SSR_CONN: [1]
+    - SOLID_STATE_RELAY: [3]
+  -
+    - HEATER: [1]
+    - SSR_CONN: [2]
+    - SOLID_STATE_RELAY: [4]
+  -
+    - THERMAL_FUSE: [2]
+    - NEUTRAL_FUSED: [1]
+    - HEATER: [4]
+  -
+    - POWER_SWITCH: [4]
+    - NEUTRAL: [1]
+    - BOARD_HV: [5]
+  -
+    - POWER_SWITCH: [2]
+    - LINE: [1]
+    - BOARD_HV: [4]
+  -
+    - SOCKET: [3]
+    - EARTH: [1]
+    - CASE: [1]
+  -
+    - SOCKET: [3]
+    - EARTH: [1]
+    - BOILER: [1]
+  -
+    - SOCKET: [3]
+    - EARTH: [1]
+    - SOLENOID: [3]
+  -
+    - THERMAL_FUSE: [2]
+    - NEUTRAL_FUSED: [1]
+    - PUMP: [2]
+  -
+    - THERMAL_FUSE: [2]
+    - NEUTRAL_FUSED: [1]
+    - SOLENOID: [2]
+  -
+    - SOCKET: [2]
+    - NEUTRAL: [1]
+    - THERMAL_FUSE: [1]
+  -
+    - BOARD_HV: [1]
+    - SWITCHED: [1]
+    - PUMP: [1]
+  -
+    - BOARD_HV: [2]
+    - SWITCHED: [2]
+    - SOLENOID: [1]
+  -
+    - BOARD_LV: [1, 2]
+    - DISPLAY_PWR: [1, 2]
+    - DISPLAY: [1, 4]
+  -
+    - BOARD_LV: [3, 4]
+    - SSR_SIGNAL: [1, 2]
+    - SOLID_STATE_RELAY: [1, 2]
+  -
+    - BREW_SWITCH: [1, 2]
+    - BUTTONS: [1, 2]
+    - BOARD_LV: [5, 6]
+  -
+    - STEAM_SWITCH: [1, 2]
+    - BUTTONS: [3, 4]
+    - BOARD_LV: [7, 8]

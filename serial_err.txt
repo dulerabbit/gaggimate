@@ -1,0 +1,14 @@
+--- Miniterm on COM4  115200,8,N,1 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+Exception in thread rx:
+Traceback (most recent call last):
+  File "C:\Users\Administrator\.platformio\python3\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\.platformio\python3\Lib\threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Administrator\.platformio\penv\Lib\site-packages\serial\tools\miniterm.py", line 499, in reader
+    data = self.serial.read(self.serial.in_waiting or 1)
+                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.platformio\penv\Lib\site-packages\serial\serialwin32.py", line 259, in in_waiting
+    raise SerialException("ClearCommError failed ({!r})".format(ctypes.WinError()))
+serial.serialutil.SerialException: ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22))
