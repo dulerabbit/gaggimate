@@ -6,7 +6,7 @@
       "chipFamily": "ESP32-S3",
       "parts": [
         {
-          "path": "https://s3.tebi.io/gaggimate-firmware/gaggimate-latest.bin",
+          "path": "./firmware.bin",
           "offset": 65536
         }
       ]
