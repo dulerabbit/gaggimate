@@ -71,14 +71,8 @@ static void disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_
 /*Read the touchpad*/
 static void touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data) {
     static int16_t x, y;
-    Display *display = static_cast<Display *>(indev_driver->user_data);
-    uint8_t touched = display->getPoint(&x, &y, 1);
+    uint8_t touched = static_cast<Display *>(indev_driver->user_data)->getPoint(&x, &y, 1);
     if (touched) {
-        // Ignore noisy/invalid touch coordinates to keep LVGL input stable.
-        if (x < 0 || y < 0 || x >= static_cast<int16_t>(display->width()) || y >= static_cast<int16_t>(display->height())) {
-            data->state = LV_INDEV_STATE_REL;
-            return;
-        }
         data->point.x = x;
         data->point.y = y;
         data->state = LV_INDEV_STATE_PR;

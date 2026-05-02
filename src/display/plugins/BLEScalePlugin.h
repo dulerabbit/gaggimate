@@ -1,9 +1,6 @@
 #ifndef BLESCALEPLUGIN_H
 #define BLESCALEPLUGIN_H
 #include "../core/Plugin.h"
-#include "../core/PluginManager.h"
-#include "../core/Controller.h"
-#include "../core/Settings.h"
 #include "remote_scales.h"
 #include "remote_scales_plugin_registry.h"
 
@@ -11,7 +8,6 @@ void on_ble_measurement(float value);
 
 constexpr unsigned long UPDATE_INTERVAL_MS = 1000;
 constexpr unsigned int RECONNECTION_TRIES = 15;
-constexpr unsigned long CONNECT_ATTEMPT_INTERVAL_MS = 2000;
 
 class BLEScalePlugin : public Plugin {
   public:
@@ -60,7 +56,6 @@ class BLEScalePlugin : public Plugin {
     std::string uuid;
 
     unsigned long lastUpdate = 0;
-    unsigned long lastConnectAttempt = 0;
     unsigned int reconnectionTries = 0;
 
     // Rate limiting for callbacks

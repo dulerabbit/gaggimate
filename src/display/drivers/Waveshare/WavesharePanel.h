@@ -95,8 +95,6 @@ class WavesharePanel : public Display {
 
     bool initTouch();
 
-    void retryTouchInitIfNeeded();
-
     uint8_t _brightness;
 
     esp_lcd_panel_handle_t _panelDrv;
@@ -108,9 +106,6 @@ class WavesharePanel : public Display {
 
     bool _has_init;
     bool _extension_initialized = false;
-
-    uint32_t _nextTouchRetryMs = 0;
-    uint8_t _touchRetryCount = 0;
 
     WS_RGBPanel_Wakeup_Method _wakeupMethod;
 

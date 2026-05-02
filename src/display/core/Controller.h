@@ -1,7 +1,6 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include <algorithm>
 #include "NimBLEClientController.h"
 #include "NimBLEComm.h"
 #include "PluginManager.h"
@@ -14,23 +13,14 @@
 #include <display/ui/default/DefaultUI.h>
 #endif
 
-const IPAddress WIFI_AP_IP(4, 4, 4, 1);
-const IPAddress WIFI_SUBNET_MASK(255, 255, 255, 0);
-
-enum MachineMode {
-    STANDBY = 0,
-    BREW = 1,
-    STEAM = 2,
-    WATER = 3,
-    GRIND = 4
-};
+const IPAddress WIFI_AP_IP(4, 4, 4, 1); // the IP address the web server, Samsung requires the IP to be in public space
+const IPAddress WIFI_SUBNET_MASK(255, 255, 255, 0); // no need to change: https://avinetworks.com/glossary/subnet-mask/
 
 enum class VolumetricMeasurementSource { INACTIVE, FLOW_ESTIMATION, BLUETOOTH };
 
 class Controller {
   public:
-    static Controller* getInstance();
-    void begin();
+    Controller() = default;
 
     void setup();
     void connect();
@@ -44,13 +34,12 @@ class Controller {
     void setTargetGrindDuration(int duration);
     void setTargetGrindVolume(double volume);
 
-    MachineMode getMode() const { return static_cast<MachineMode>(mode); }
+    int getMode() const;
 
     float getTargetTemp() const;
     int getTargetGrindDuration() const;
     virtual float getCurrentTemp() const { return currentTemp; }
     bool isActive() const;
-    bool isActive(MachineMode m) const { return mode == static_cast<int>(m) && isActive(); }
     bool isGrindActive() const;
     bool isUpdating() const;
     bool isAutotuning() const;
@@ -62,6 +51,8 @@ class Controller {
     virtual float getCurrentPressure() const { return pressure; }
     virtual float getCurrentPuckFlow() const { return currentPuckFlow; }
     virtual float getCurrentPumpFlow() const { return currentPumpFlow; }
+
+    bool isTaskHealthy() const { return is_task_healthy(eTaskGetState(taskHandle)); }
 
     void autotune(int testTime, int samples);
     void startProcess(Process *process);
@@ -99,7 +90,6 @@ class Controller {
     void onVolumetricMeasurement(double measurement, VolumetricMeasurementSource source);
     void setVolumetricOverride(bool override) { volumetricOverride = override; }
     bool isBluetoothScaleHealthy() const;
-    bool isConnected() { return const_cast<NimBLEClientController&>(clientController).isConnected(); }
     void onFlush();
     int getWaterLevel() const {
         float reversedLevel = static_cast<float>(settings.getEmptyTankDistance()) -
@@ -116,9 +106,6 @@ class Controller {
     NimBLEClientController *getClientController() { return &clientController; }
 
   private:
-    Controller() = default;
-    static Controller* instance;
-
     // Initialization methods
 #ifndef GAGGIMATE_HEADLESS
     void setupPanel();
@@ -189,7 +176,7 @@ class Controller {
     static const unsigned long BLUETOOTH_GRACE_PERIOD_MS = 1500; // 1.5 second grace period
     static const unsigned long CONTROLLER_WAITING_TIMEOUT_MS = 10000;
 
-    TaskHandle_t taskHandle;
+    xTaskHandle taskHandle;
 
     static void loopTask(void *arg);
 };

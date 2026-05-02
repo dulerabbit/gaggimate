@@ -1,7 +1,6 @@
 #ifndef DEFAULTUI_H
 #define DEFAULTUI_H
 
-#include "lvgl.h"
 #include <display/core/PluginManager.h>
 #include <display/core/ProfileManager.h>
 #include <display/core/constants.h>
@@ -39,27 +38,6 @@ class DefaultUI {
     void onNextProfile();
     void onPreviousProfile();
     void onProfileSelect();
-    bool isProfileScreenActive() const;
-    bool isMenuScreenActive() const;
-    bool isStandbyScreenActive() const;
-    bool isBrewScreenActive() const;
-    bool isBrewSettingsActive() const;
-    bool isSimpleProcessScreenActive() const;
-    bool isStatusScreenActive() const;
-    bool isBackNavigableScreenActive() const;
-    void onNextMenuItem();
-    void onPreviousMenuItem();
-    void onMenuItemSelect();
-    void onBrewScreenRotate(int delta);
-    void onBrewScreenSelect();
-    void onSimpleProcessRotate(int delta);
-    void onSimpleProcessPress();
-    void onStatusScreenSelect();
-    void onBackNavigate();
-    void onBrewSettingsRotate(int delta);
-    void onBrewSettingsPress();
-    void onBrewSettingsToggleMode();
-    void wakeToMenu();
     void setBrightness(int brightness) {
         if (panelDriver) {
             panelDriver->setBrightness(brightness);
@@ -73,6 +51,10 @@ class DefaultUI {
     void markProfileClean() { profileDirty = false; }
 
     void applyTheme();
+
+    bool isTaskHealthy() const {
+        return is_task_healthy(eTaskGetState(taskHandle)) && is_task_healthy(eTaskGetState(profileTaskHandle));
+    }
 
   private:
     void setupPanel();
@@ -99,8 +81,6 @@ class DefaultUI {
     void updateTempStableFlag();
     void adjustHeatingIndicator(lv_obj_t *contentPanel);
     void reloadProfiles();
-    void triggerAdjustmentPulse(bool increase);
-    bool hasActiveAdjustmentPulse(unsigned long now) const;
 
     Driver *panelDriver = nullptr;
     Controller *controller;
@@ -149,14 +129,6 @@ class DefaultUI {
 
     int profileDirty = 0;
     int currentProfileIdx;
-    int currentMenuIdx = 0;
-    int currentBrewTopIdx = 2;
-    int currentBrewSettingsIdx = 0;
-    int currentBrewActionIdx = 1;
-    int currentSimpleProcessIdx = 0;
-    bool brewSettingsActionMode = false;
-    unsigned long plusPulseUntil = 0;
-    unsigned long minusPulseUntil = 0;
     int profileLoaded = 0;
     std::vector<String> favoritedProfileIds;
     std::vector<Profile> favoritedProfiles;

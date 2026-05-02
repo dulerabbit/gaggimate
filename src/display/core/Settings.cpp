@@ -1,8 +1,6 @@
-#include <algorithm>
-#include <vector>
-#include <numeric>
 #include "Settings.h"
 
+#include <algorithm>
 #include <utility>
 
 Settings::Settings() {

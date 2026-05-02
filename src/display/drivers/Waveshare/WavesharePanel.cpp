@@ -4,93 +4,28 @@
 #include "driver/gpio.h"
 #include "driver/spi_master.h"
 #include "utilities.h"
-#include <display/drivers/common/ElecrowRelaxedCST816.h>
 #include <display/drivers/common/RGBPanelInit.h>
 #include <esp_adc_cal.h>
-
-static void panel_self_test_fill(esp_lcd_panel_handle_t panel, uint16_t width, uint16_t height) {
-    const int band_h = 24;
-    uint16_t *line = (uint16_t *)heap_caps_malloc(width * sizeof(uint16_t), MALLOC_CAP_8BIT);
-    if (!line) {
-        return;
-    }
-
-    // Draw quick RGB bands so we can confirm panel output before LVGL boots.
-    for (int y = 0; y < height; ++y) {
-        uint16_t color = 0xF800; // red
-        if ((y / band_h) % 3 == 1)
-            color = 0x07E0; // green
-        else if ((y / band_h) % 3 == 2)
-            color = 0x001F; // blue
-
-        for (int x = 0; x < width; ++x) {
-            line[x] = color;
-        }
-        esp_lcd_panel_draw_bitmap(panel, 0, y, width, y + 1, line);
-    }
-
-    free(line);
-}
 
 static void TouchDrvDigitalWrite(uint32_t gpio, uint8_t level);
 static int TouchDrvDigitalRead(uint32_t gpio);
 static void TouchDrvPinMode(uint32_t gpio, uint8_t mode);
 
-#ifdef ELECROW_ROTARY_21
-// PCF8574 state tracker — initial state has all pins HIGH (pull-ups active)
-static uint8_t s_pcf8574_state = 0xFF;
-static uint8_t s_pcf8574_addr = ELECROW_PCF8574_ADDR;
-
-static void elecrow_pcf_write(uint8_t state) {
-    s_pcf8574_state = state;
-    Wire.beginTransmission(s_pcf8574_addr);
-    Wire.write(state);
-    if (Wire.endTransmission() != 0) {
-        // Some Elecrow batches strap PCF8574 at 0x20 instead of 0x21.
-        uint8_t fallback = (s_pcf8574_addr == 0x21) ? 0x20 : 0x21;
-        Wire.beginTransmission(fallback);
-        Wire.write(state);
-        if (Wire.endTransmission() == 0) {
-            s_pcf8574_addr = fallback;
-        }
-    }
-}
-#endif
-
 void ST7701_CS_EN() {
-#ifdef ELECROW_ROTARY_21
-    // On Elecrow, LCD SPI CS is GPIO16 (active LOW), not via TCA9554
-    digitalWrite(ELECROW_LCD_CS_PIN, LOW);
-    delay(10);
-#else
     Set_EXIO(EXIO_PIN3, Low);
     delay(10);
-#endif
 }
 
 void ST7701_CS_Dis() {
-#ifdef ELECROW_ROTARY_21
-    digitalWrite(ELECROW_LCD_CS_PIN, HIGH);
-    delay(10);
-#else
     Set_EXIO(EXIO_PIN3, High);
     delay(10);
-#endif
 }
 
 void ST7701_Reset() {
-#ifdef ELECROW_ROTARY_21
-    // LCD reset is PCF8574 P4 (active LOW)
-    elecrow_pcf_write(s_pcf8574_state & ~ELECROW_PCF_LCD_RST_BIT);
-    delay(20);
-    elecrow_pcf_write(s_pcf8574_state | ELECROW_PCF_LCD_RST_BIT);
-    delay(10);
-#else
     Set_EXIO(EXIO_PIN1, Low);
     delay(20);
     Set_EXIO(EXIO_PIN1, High);
     delay(10);
-#endif
 }
 
 WavesharePanel::WavesharePanel(/* args */)
@@ -119,17 +54,11 @@ bool WavesharePanel::begin(WS_RGBPanel_Color_Order order) {
     ledcAttachPin(WS_BOARD_TFT_BL, WS_PWM_CHANNEL);
 
     initExtension();
-#ifndef ELECROW_ROTARY_21
     Set_EXIO(EXIO_PIN8, Low);
-#endif
 
     if (!initTouch()) {
-        // Some panels boot without touch connected/responding; keep display init alive.
-        Serial.println(F("Touch chip not found, continuing without touch."));
-        _nextTouchRetryMs = millis() + 3000;
-        _touchRetryCount = 0;
-    } else {
-        _nextTouchRetryMs = 0;
+        Serial.println(F("Touch chip not found."));
+        return false;
     }
 
     initBUS();
@@ -141,19 +70,9 @@ void WavesharePanel::initExtension() {
     if (_extension_initialized) {
         return;
     }
-#ifdef ELECROW_ROTARY_21
-    // Wire and PCF8574 are already initialized in main.cpp for Elecrow.
-    // Just configure GPIO16 as CS output and sync our state tracker.
-    pinMode(ELECROW_LCD_CS_PIN, OUTPUT);
-    digitalWrite(ELECROW_LCD_CS_PIN, HIGH);
-    // LCD power (P3) and reset (P4) are HIGH from main.cpp PCF8574 init.
-    // Sync our state with that (all pins HIGH).
-    s_pcf8574_state = 0xFF;
-#else
     I2C_Init();
     delay(120);
     TCA9554PWR_Init(0x00);
-#endif
     _extension_initialized = true;
 }
 
@@ -213,9 +132,6 @@ WavesharePanelType WavesharePanel::getModel() {
             return WS_2_8_INCHES;
         }
     }
-#ifdef ELECROW_ROTARY_21
-    return WS_2_1_INCHES;
-#endif
     return WS_UNKNOWN;
 }
 
@@ -312,33 +228,7 @@ uint16_t WavesharePanel::width() { return WS_BOARD_TFT_WIDTH; }
 
 uint16_t WavesharePanel::height() { return WS_BOARD_TFT_HEIGHT; }
 
-void WavesharePanel::retryTouchInitIfNeeded() {
-#ifdef ELECROW_ROTARY_21
-    if (_touchDrv || _nextTouchRetryMs == 0 || millis() < _nextTouchRetryMs) {
-        return;
-    }
-
-    ++_touchRetryCount;
-    log_i("[ELECROW] Retrying touch init (%u)", _touchRetryCount);
-    if (initTouch()) {
-        getModel();
-        _nextTouchRetryMs = 0;
-        log_i("[ELECROW] Touch retry succeeded");
-        return;
-    }
-
-    if (_touchRetryCount >= 12) {
-        _nextTouchRetryMs = 0;
-        log_e("[ELECROW] Touch retries exhausted");
-        return;
-    }
-
-    _nextTouchRetryMs = millis() + 5000;
-#endif
-}
-
 uint8_t WavesharePanel::getPoint(int16_t *x_array, int16_t *y_array, uint8_t get_point) {
-    retryTouchInitIfNeeded();
     if (_touchDrv) {
 
         // The FT3267 type touch reading INT level is to read the coordinates
@@ -364,11 +254,7 @@ bool WavesharePanel::isPressed() const {
 
 uint16_t WavesharePanel::getBattVoltage() {
     esp_adc_cal_characteristics_t adc_chars;
-#ifdef ADC_ATTEN_DB_12
     esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_12, ADC_WIDTH_BIT_12, 1100, &adc_chars);
-#else
-    esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_11, ADC_WIDTH_BIT_12, 1100, &adc_chars);
-#endif
 
     const int number_of_samples = 20;
     uint32_t sum = 0;
@@ -942,22 +828,12 @@ void WavesharePanel::initBUS() {
                 .h_res = WS_BOARD_TFT_WIDTH,
                 .v_res = WS_BOARD_TFT_HEIGHT,
                 // The following parameters should refer to LCD spec
-#ifdef ELECROW_ROTARY_21
-                // Elecrow CrowPanel 2.1" timing (from Elecrow reference code)
-                .hsync_pulse_width = 4,
-                .hsync_back_porch = 20,
-                .hsync_front_porch = 10,
-                .vsync_pulse_width = 4,
-                .vsync_back_porch = 20,
-                .vsync_front_porch = 10,
-#else
                 .hsync_pulse_width = 8,
                 .hsync_back_porch = 10,
                 .hsync_front_porch = 50,
                 .vsync_pulse_width = 2,
                 .vsync_back_porch = 18,
                 .vsync_front_porch = 8,
-#endif
                 .flags =
                     {
                         .pclk_active_neg = 0,
@@ -1000,45 +876,9 @@ void WavesharePanel::initBUS() {
     ESP_ERROR_CHECK(esp_lcd_new_rgb_panel(&panel_config, &_panelDrv));
     ESP_ERROR_CHECK(esp_lcd_panel_reset(_panelDrv));
     ESP_ERROR_CHECK(esp_lcd_panel_init(_panelDrv));
-
-    panel_self_test_fill(_panelDrv, WS_BOARD_TFT_WIDTH, WS_BOARD_TFT_HEIGHT);
 }
 
 bool WavesharePanel::initTouch() {
-#ifdef ELECROW_ROTARY_21
-    // Elecrow CrowPanel 2.1": capacitive touch via CST816x.
-    // Touch IRQ is PCF8574 P2 (not a direct GPIO) — use polling (setPins(-1, -1)).
-    // Do NOT use WS_BOARD_TOUCH_IRQ (GPIO16 = LCD CS pin).
-
-    // Re-pulse PCF8574 P0 (touch reset, active-low) right here with a long
-    // post-reset settle time so the CST816 firmware fully loads before we probe.
-    // Keep P1-P7 HIGH to avoid disturbing LCD power (P3) or LCD reset (P4).
-    log_i("[ELECROW] Touch reset pulse via PCF8574 P0");
-    elecrow_pcf_write(s_pcf8574_state & ~0x01u);  // P0 LOW
-    delay(20);
-    elecrow_pcf_write(s_pcf8574_state | 0x01u);   // P0 HIGH
-    delay(500);  // CST816 needs ≥200 ms; 500 ms for safety
-
-    const uint8_t touchAddresses[] = {CST816_SLAVE_ADDRESS, 0x14};
-    for (uint8_t i = 0; i < (sizeof(touchAddresses) / sizeof(touchAddresses[0])); ++i) {
-        const uint8_t addr = touchAddresses[i];
-        _touchDrv = new ElecrowRelaxedCST816();
-        _touchDrv->setGpioCallback(TouchDrvPinMode, TouchDrvDigitalWrite, TouchDrvDigitalRead);
-        _touchDrv->setPins(-1, -1);
-        log_i("[ELECROW] Probing touch at 0x%02X", addr);
-        if (_touchDrv->begin(Wire, addr, WS_BOARD_I2C_SDA, WS_BOARD_I2C_SCL)) {
-            Wire.setClock(400000UL);
-            const char *model = _touchDrv->getModelName();
-            _touchType = WS_T_RGB_TOUCH_CST820;
-            log_i("[ELECROW] Touch initialized: %s at 0x%02X", model, addr);
-            return true;
-        }
-        delete _touchDrv;
-        _touchDrv = nullptr;
-    }
-    log_e("[ELECROW] Touch chip not found (checked 0x%02X and 0x14).", CST816_SLAVE_ADDRESS);
-    return false;
-#endif
     const uint8_t touch_irq_pin = WS_BOARD_TOUCH_IRQ;
     bool result = false;
 
@@ -1106,7 +946,7 @@ void WavesharePanel::pushColors(uint16_t x, uint16_t y, uint16_t width, uint16_t
 static void TouchDrvDigitalWrite(uint32_t gpio, uint8_t level) {
     if (gpio == 0) {
         Set_EXIO(EXIO_PIN2, level);
-    } else if (gpio < 64) {
+    } else {
         digitalWrite(gpio, level);
     }
 }
@@ -1114,16 +954,15 @@ static void TouchDrvDigitalWrite(uint32_t gpio, uint8_t level) {
 static int TouchDrvDigitalRead(uint32_t gpio) {
     if (gpio == 0) {
         return Read_EXIO(EXIO_PIN2);
-    } else if (gpio < 64) {
+    } else {
         return digitalRead(gpio);
     }
-    return 0;
 }
 
 static void TouchDrvPinMode(uint32_t gpio, uint8_t mode) {
     if (gpio == 0) {
         Mode_EXIO(EXIO_PIN2, mode);
-    } else if (gpio < 64) {
+    } else {
         pinMode(gpio, mode);
     }
 }

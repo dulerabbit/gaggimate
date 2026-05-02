@@ -80,27 +80,3 @@
 #define WS_BOARD_SDMMC_DAT (42)
 
 #define WS_BOARD_ADC_DET (4)
-
-#ifdef ELECROW_ROTARY_21
-// Elecrow CrowPanel 2.1": HSYNC/VSYNC and I2C pins are swapped vs Waveshare.
-// Elecrow: HSYNC=15, VSYNC=7, I2C SDA=38, I2C SCL=39
-// Waveshare: HSYNC=38, VSYNC=39, I2C SDA=15, I2C SCL=7
-#undef  WS_BOARD_TFT_HSYNC
-#undef  WS_BOARD_TFT_VSYNC
-#undef  WS_BOARD_I2C_SDA
-#undef  WS_BOARD_I2C_SCL
-#define WS_BOARD_TFT_HSYNC  (15)
-#define WS_BOARD_TFT_VSYNC  (7)
-#define WS_BOARD_I2C_SDA    (38)
-#define WS_BOARD_I2C_SCL    (39)
-// LCD SPI CS is a direct GPIO on Elecrow (not via TCA9554 expander)
-#define ELECROW_LCD_CS_PIN  (16)
-// PCF8574 GPIO expander (Elecrow uses PCF8574 @ 0x21, not TCA9554 @ 0x20)
-#define ELECROW_PCF8574_ADDR    (0x21)
-#define ELECROW_PCF_LCD_PWR_BIT (1 << 3)   // P3 = LCD power (HIGH = on)
-#define ELECROW_PCF_LCD_RST_BIT (1 << 4)   // P4 = LCD reset (LOW = active)
-// Rotary encoder (EC11): CLK=GPIO42, DT=GPIO4, SW=PCF8574 P5 (INPUT_PULLUP)
-#define ELECROW_ENC_CLK_PIN (42)
-#define ELECROW_ENC_DT_PIN  (4)
-#define ELECROW_ENC_SW_BIT  (5)  // PCF8574 P5, active LOW (INPUT_PULLUP)
-#endif

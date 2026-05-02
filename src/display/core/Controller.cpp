@@ -22,24 +22,13 @@
 #include <display/plugins/SmartGrindPlugin.h>
 #include <display/plugins/WebUIPlugin.h>
 #include <display/plugins/mDNSPlugin.h>
+#ifndef GAGGIMATE_HEADLESS
 #include <display/drivers/AmoledDisplayDriver.h>
 #include <display/drivers/LilyGoDriver.h>
 #include <display/drivers/WaveshareDriver.h>
+#endif
 
 const String LOG_TAG = F("Controller");
-
-Controller* Controller::instance = nullptr;
-
-Controller* Controller::getInstance() {
-    if (instance == nullptr) {
-        instance = new Controller();
-    }
-    return instance;
-}
-
-void Controller::begin() {
-    setup();
-}
 
 void Controller::setup() {
     mode = settings.getStartupMode();
@@ -54,15 +43,11 @@ void Controller::setup() {
 
     pluginManager = new PluginManager();
 #ifndef GAGGIMATE_HEADLESS
-    if (driver == nullptr) {
-        ESP_LOGE(LOG_TAG, "Display driver is null; skipping UI init to avoid boot-loop");
-    } else {
-        ui = new DefaultUI(this, driver, pluginManager);
-        if (driver->supportsSDCard() && driver->installSDCard()) {
-            sdcard = true;
-            ESP_LOGI(LOG_TAG, "SD Card detected and mounted");
-            ESP_LOGI(LOG_TAG, "Used: %lluMB, Capacity: %lluMB", SD_MMC.usedBytes() / 1024 / 1024, SD_MMC.cardSize() / 1024 / 1024);
-        }
+    ui = new DefaultUI(this, driver, pluginManager);
+    if (driver->supportsSDCard() && driver->installSDCard()) {
+        sdcard = true;
+        ESP_LOGI(LOG_TAG, "SD Card detected and mounted");
+        ESP_LOGI(LOG_TAG, "Used: %lluMB, Capacity: %lluMB", SD_MMC.usedBytes() / 1024 / 1024, SD_MMC.cardSize() / 1024 / 1024);
     }
 #endif
     FS *fs = &SPIFFS;
@@ -101,9 +86,7 @@ void Controller::setup() {
     pluginManager->on("profiles:profile:select", [this](Event const &event) { this->handleProfileUpdate(); });
 
 #ifndef GAGGIMATE_HEADLESS
-    if (ui != nullptr) {
-        ui->init();
-    }
+    ui->init();
 #endif
     this->onScreenReady();
 
@@ -135,35 +118,18 @@ void Controller::connect() {
 
 #ifndef GAGGIMATE_HEADLESS
 void Controller::setupPanel() {
-#ifdef ELECROW_ROTARY_21
-    Serial.println(F("[ELECROW] setupPanel start"));
-    driver = WaveshareDriver::getInstance();
-    Serial.println(F("[ELECROW] driver instance ready"));
-    driver->init();
-    Serial.println(F("[ELECROW] driver init complete"));
-#else
-#ifdef FORCE_LILYGO_DRIVER
-    Serial.println(F("[DISPLAY] Forcing LilyGo driver"));
-    driver = LilyGoDriver::getInstance();
-    driver->init();
-#else
-    Driver *lilygo = LilyGoDriver::getInstance();
-    Driver *amoled = AmoledDisplayDriver::getInstance();
-
-    if (lilygo->isCompatible()) {
-        Serial.println(F("[DISPLAY] LilyGo driver selected"));
-        driver = lilygo;
-        driver->init();
-    } else if (amoled->isCompatible()) {
-        Serial.println(F("[DISPLAY] AMOLED driver selected"));
-        driver = amoled;
-        driver->init();
+    if (LilyGoDriver::getInstance()->isCompatible()) {
+        driver = LilyGoDriver::getInstance();
+    } else if (AmoledDisplayDriver::getInstance()->isCompatible()) {
+        driver = AmoledDisplayDriver::getInstance();
+    } else if (WaveshareDriver::getInstance()->isCompatible()) {
+        driver = WaveshareDriver::getInstance();
     } else {
-        Serial.println(F("[DISPLAY] No compatible display driver found"));
-        driver = nullptr;
+        Serial.println("No compatible display driver found");
+        delay(10000);
+        ESP.restart();
     }
-#endif
-#endif
+    driver->init();
 }
 #endif
 
@@ -697,6 +663,8 @@ bool Controller::isGrindActive() const {
     Process *proc = currentProcess;
     return proc != nullptr && proc->isActive() && proc->getType() == MODE_GRIND;
 }
+
+int Controller::getMode() const { return mode; }
 
 void Controller::setMode(int newMode) {
     Event modeEvent = pluginManager->trigger("controller:mode:change", "value", newMode);

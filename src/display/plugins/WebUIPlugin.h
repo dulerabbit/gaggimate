@@ -9,7 +9,6 @@
 #include <ArduinoJson.h>
 #include <ESPAsyncWebServer.h>
 #include <display/core/Plugin.h>
-#include <display/core/PluginManager.h>
 
 constexpr size_t UPDATE_CHECK_INTERVAL = 5 * 60 * 1000;
 constexpr size_t CLEANUP_PERIOD = 5 * 1000;

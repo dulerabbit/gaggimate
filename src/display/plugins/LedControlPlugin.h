@@ -2,9 +2,6 @@
 #define LEDCONTROLPLUGIN_H
 #include <Arduino.h>
 #include <display/core/Plugin.h>
-#include <display/core/PluginManager.h>
-#include <display/core/Controller.h>
-#include <display/core/Settings.h>
 
 constexpr unsigned long UPDATE_INTERVAL = 500;
 

@@ -4,8 +4,6 @@
 #include <SPIFFS.h>
 #include <cmath>
 #include <display/core/Controller.h>
-#include <display/core/PluginManager.h>
-#include <display/core/Settings.h>
 #include <display/core/ProfileManager.h>
 #include <display/core/process/BrewProcess.h>
 #include <display/core/utils.h>
@@ -261,6 +259,8 @@ void ShotHistoryPlugin::startRecording() {
         if (brewProcess->isUtility()) {
             return;
         }
+        // Capture initial volumetric mode state (brew by weight vs brew by time)
+        shotStartedVolumetric = brewProcess->target == ProcessTarget::VOLUMETRIC;
     }
     currentId = padId(String(controller->getSettings().getHistoryIndex()));
     shotStart = millis();
@@ -279,9 +279,6 @@ void ShotHistoryPlugin::startRecording() {
 
     // Reset phase tracking for new shot
     lastRecordedPhase = 0xFF; // Invalid value to detect first phase
-
-    // Capture initial volumetric mode state (brew by weight vs brew by time)
-    shotStartedVolumetric = controller->getSettings().isVolumetricTarget();
 }
 
 unsigned long ShotHistoryPlugin::getTime() {

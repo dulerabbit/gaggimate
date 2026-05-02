@@ -1,7 +1,6 @@
 #ifndef MDNSPLUGIN_H
 #define MDNSPLUGIN_H
 #include "../core/Plugin.h"
-#include "../core/PluginManager.h"
 
 struct Event;
 

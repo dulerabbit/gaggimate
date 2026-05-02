@@ -24,6 +24,14 @@ SET(SOURCES components/ui_comp_dials.c
     images/ui_img_1455708189.c
     images/ui_img_1951499226.c
     images/ui_img_1220767159.c
+    images/ui_img_untitled_png.c
+    images/ui_img_489054950.c
+    images/ui_img_340686386.c
+    images/ui_img_untitled_png.c
+    images/ui_img_1455708189.c
+    images/ui_img_340686386.c
+    images/ui_img_1951499226.c
+    images/ui_img_1220767159.c
     images/ui_img_295763949.c
     images/ui_img_98036921.c
     images/ui_img_944513416.c
@@ -34,6 +42,14 @@ SET(SOURCES components/ui_comp_dials.c
     images/ui_img_783005998.c
     images/ui_img_545340440.c
     images/ui_img_363557387.c
+    images/ui_img_untitled_png.c
+    images/ui_img_489054950.c
+    images/ui_img_340686386.c
+    images/ui_img_untitled_png.c
+    images/ui_img_1455708189.c
+    images/ui_img_340686386.c
+    images/ui_img_1951499226.c
+    images/ui_img_1220767159.c
     images/ui_img_445946954.c
     images/ui_img_1424216268.c
     images/ui_img_332059803.c
@@ -43,23 +59,33 @@ SET(SOURCES components/ui_comp_dials.c
     images/ui_img_2074354459.c
     images/ui_img_1594943393.c
     images/ui_img_1464184441.c
+    images/ui_img_untitled_png.c
+    images/ui_img_489054950.c
+    images/ui_img_340686386.c
+    images/ui_img_untitled_png.c
+    images/ui_img_1455708189.c
+    images/ui_img_340686386.c
+    images/ui_img_1951499226.c
+    images/ui_img_1220767159.c
+    images/ui_img_untitled_png.c
+    images/ui_img_489054950.c
+    images/ui_img_340686386.c
+    images/ui_img_untitled_png.c
+    images/ui_img_1455708189.c
+    images/ui_img_340686386.c
+    images/ui_img_1951499226.c
+    images/ui_img_1220767159.c
     images/ui_img_1456692430.c
+    images/ui_img_untitled_png.c
+    images/ui_img_489054950.c
+    images/ui_img_340686386.c
+    images/ui_img_untitled_png.c
+    images/ui_img_1455708189.c
+    images/ui_img_340686386.c
+    images/ui_img_1951499226.c
+    images/ui_img_1220767159.c
     images/ui_img_1829139226.c
     images/ui_img_flowmeter_png.c
-    images/ui_img_1510335.c
-    images/ui_img_691326438.c
-    images/ui_img_glow_play_40x40.c
-    images/ui_img_glow_settings_40x40.c
-    images/ui_img_glow_dropdown_bar_40x40.c
-    images/ui_img_glow_mug_hot_alt_80x80.c
-    images/ui_img_glow_wind_80x80.c
-    images/ui_img_glow_raindrops_80x80.c
-    images/ui_img_glow_coffee_bean_80x80.c
-    images/ui_img_glow_check_40x40.c
-    images/ui_img_glow_pause_40x40.c
-    images/ui_img_glow_disk_30x30.c
-    images/ui_img_glow_floppy_disks_30x30.c
-    images/ui_img_glow_plus_small_40x40.c
-    images/ui_img_glow_minus_small_40x40.c)
+    images/ui_img_691326438.c)
 
 add_library(ui ${SOURCES})

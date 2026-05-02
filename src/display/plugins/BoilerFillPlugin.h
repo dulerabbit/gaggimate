@@ -2,9 +2,6 @@
 #define BOILERFILLPLUGIN_H
 
 #include <display/core/Plugin.h>
-#include <display/core/PluginManager.h>
-#include <display/core/Controller.h>
-#include <display/core/Settings.h>
 
 struct Event;
 

@@ -1,7 +1,6 @@
 #ifndef HOMEKITPLUGIN_H
 #define HOMEKITPLUGIN_H
 #include "../core/Plugin.h"
-#include "../core/PluginManager.h"
 #include "HomeSpan.h"
 
 #define HOMESPAN_PORT 8080

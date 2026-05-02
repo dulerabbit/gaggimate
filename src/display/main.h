@@ -4,6 +4,6 @@
 #include "core/Controller.h"
 #include <version.h>
 
-extern Controller &controller;
+extern Controller controller;
 
 #endif // MAIN_H

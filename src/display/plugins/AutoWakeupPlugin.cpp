@@ -1,8 +1,5 @@
 #include "AutoWakeupPlugin.h"
 #include <display/core/constants.h>
-#include <display/core/Controller.h>
-#include <display/core/PluginManager.h>
-#include <display/core/Settings.h>
 #include <esp_log.h>
 
 const String LOG_TAG = F("AutoWakeupPlugin");

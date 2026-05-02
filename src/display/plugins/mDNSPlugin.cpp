@@ -1,8 +1,6 @@
 #include "mDNSPlugin.h"
 #include "../core/Controller.h"
 #include "../core/Event.h"
-#include "../core/PluginManager.h"
-#include "../core/Settings.h"
 #include <ESPmDNS.h>
 #include <WiFi.h>
 #include <esp_log.h>

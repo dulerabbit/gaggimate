@@ -1,9 +1,6 @@
 #ifndef SMARTGRINDPLUGIN_H
 #define SMARTGRINDPLUGIN_H
 #include "../core/Plugin.h"
-#include "../core/PluginManager.h"
-#include "../core/Controller.h"
-#include "../core/Settings.h"
 #include <Arduino.h>
 
 const String COMMAND_ON = "Power%20On";

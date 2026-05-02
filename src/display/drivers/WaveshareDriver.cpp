@@ -15,6 +15,6 @@ void WaveshareDriver::init() {
     beginLvglHelper(panel);
 }
 
-bool WaveshareDriver::supportsSDCard() { return false; }
+bool WaveshareDriver::supportsSDCard() { return true; }
 
-bool WaveshareDriver::installSDCard() { return false; }
+bool WaveshareDriver::installSDCard() { return panel.installSD(); }

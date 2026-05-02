@@ -2,8 +2,6 @@
 #include <DNSServer.h>
 #include <SPIFFS.h>
 #include <display/core/Controller.h>
-#include <display/core/PluginManager.h>
-#include <display/core/Settings.h>
 #include <display/core/ProfileManager.h>
 #include <display/core/process/BrewProcess.h>
 #include <display/core/process/GrindProcess.h>
@@ -719,6 +717,9 @@ void WebUIPlugin::handleBLEScaleInfo(AsyncWebServerRequest *request) {
 }
 
 void WebUIPlugin::updateOTAStatus(const String &version) {
+    if (ws.getClients().empty()) {
+        return;
+    }
     Settings const &settings = controller->getSettings();
     JsonDocument doc;
     doc["latestVersion"] = ota->getCurrentVersion();
@@ -740,10 +741,22 @@ void WebUIPlugin::updateOTAStatus(const String &version) {
         doc["spiffsUsed"] = static_cast<uint32_t>(used);
         doc["spiffsFree"] = static_cast<uint32_t>(freeBytes);
         if (total > 0) {
-            // Provide integer percentage to avoid float JSON
             doc["spiffsUsedPct"] = static_cast<uint8_t>((used * 100) / total);
         }
     }
+    // Memory usage metrics
+    {
+        size_t free = heap_caps_get_free_size(MALLOC_CAP_DEFAULT | MALLOC_CAP_INTERNAL);
+        size_t largest = heap_caps_get_largest_free_block(MALLOC_CAP_DEFAULT | MALLOC_CAP_INTERNAL);
+        size_t total = heap_caps_get_total_size(MALLOC_CAP_DEFAULT | MALLOC_CAP_INTERNAL);
+        doc["heapFree"] = static_cast<uint32_t>(free);
+        doc["heapLargest"] = static_cast<uint32_t>(largest);
+        doc["heapTotal"] = static_cast<uint32_t>(total);
+    }
+    doc["controllerTaskHealth"] = controller->isTaskHealthy();
+#ifndef GAGGIMATE_HEADLESS
+    doc["uiTaskHealth"] = controller->getUI()->isTaskHealthy();
+#endif
     if (controller->isSDCard()) {
         const uint64_t total = SD_MMC.cardSize();
         const uint64_t used = SD_MMC.usedBytes();

@@ -1,7 +1,6 @@
 #ifndef MQTTPLUGIN_H
 #define MQTTPLUGIN_H
 #include "../core/Plugin.h"
-#include "../core/PluginManager.h"
 #include <MQTT.h>
 #include <WiFi.h>
 

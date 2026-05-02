@@ -76,6 +76,7 @@ void BLEScalePlugin::setup(Controller *controller, PluginManager *manager) {
 
     manager->on("controller:bluetooth:connect", [this](Event const &) {
         if (this->controller != nullptr && this->controller->getMode() != MODE_STANDBY) {
+            ESP_LOGI("BLEScalePlugin", "Resuming scanning");
             scan();
             active = true;
         }
@@ -90,6 +91,7 @@ void BLEScalePlugin::setup(Controller *controller, PluginManager *manager) {
     manager->on("controller:grind:start", [this](Event const &) { onProcessStart(); });
     manager->on("controller:mode:change", [this](Event const &event) {
         if (event.getInt("value") != MODE_STANDBY) {
+            ESP_LOGI("BLEScalePlugin", "Resuming scanning");
             scan();
             active = true;
         } else {
@@ -184,10 +186,6 @@ void BLEScalePlugin::scan() const {
         ESP_LOGE("BLEScalePlugin", "Scanner not initialized, cannot start scan");
         return;
     }
-    if (scanner->isScanRunning()) {
-        return;
-    }
-    ESP_LOGI("BLEScalePlugin", "Resuming scanning");
     scanner->initializeAsyncScan();
 }
 
@@ -228,12 +226,6 @@ void BLEScalePlugin::establishConnection() {
         ESP_LOGE("BLEScalePlugin", "Cannot establish connection with empty UUID");
         return;
     }
-
-    const unsigned long now = millis();
-    if (now - lastConnectAttempt < CONNECT_ATTEMPT_INTERVAL_MS) {
-        return;
-    }
-    lastConnectAttempt = now;
 
     ESP_LOGI("BLEScalePlugin", "Connecting to %s", uuid.c_str());
     if (scanner == nullptr) {
@@ -295,7 +287,6 @@ void BLEScalePlugin::establishConnection() {
 
     if (!deviceFound) {
         ESP_LOGW("BLEScalePlugin", "Device %s not found in discovered scales", uuid.c_str());
-        doConnect = false;
         if (scanner != nullptr) {
             scanner->initializeAsyncScan();
         }

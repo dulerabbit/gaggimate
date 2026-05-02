@@ -1,7 +1,5 @@
 #include "HomekitPlugin.h"
 #include "../core/Controller.h"
-#include "../core/PluginManager.h"
-#include "../core/Settings.h"
 #include "../core/constants.h"
 #include <utility>
 
