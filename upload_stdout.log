@@ -1,0 +1,506 @@
+Processing elecrow_rotary_21 (platform: espressif32 @ 6.5.0; board: esp32-s3-devkitc-1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+[pio] Forced num_jobs=1 for stable build/upload
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.5.0) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20014.231204 (2.0.14) 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - tool-mkfatfs @ 2.0.1 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 57 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- FS @ 2.0.0
+|-- SPIFFS @ 2.0.0
+|-- Wire @ 2.0.0
+|-- SPI @ 2.0.0
+|-- ble_ota_dfu @ 1.0.0
+|-- NimBLE-Arduino @ 1.4.3
+|-- ESPAsyncWebServer @ 3.9.1+sha.30a4976
+|-- ArduinoJson @ 7.4.3
+|-- MQTT @ 2.5.2
+|-- esp-arduino-ble-scales @ 0.0.0+20260406233918.sha.46bae8c
+|-- HomeSpan @ 1.9.1
+|-- SensorLib @ 0.2.3
+|-- Adafruit PCF8574 @ 1.1.2
+|-- GFX Library for Arduino @ 1.4.0
+|-- lvgl @ 8.3.11
+|-- SD_MMC @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- HTTPClient @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- NimBLEComm @ 1.0.0
+|-- OTA
+|-- Preferences @ 2.0.0
+Building in release mode
+Compiling .pio\build\elecrow_rotary_21\src\display\core\Controller.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\core\PluginManager.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\core\ProfileManager.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\core\Settings.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\core\utils.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\drivers\WaveshareDriver.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\drivers\Waveshare\I2C_Driver.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\drivers\Waveshare\TCA9554PWR.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\drivers\Waveshare\WavesharePanel.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\drivers\common\LV_Helper.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\main.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\AutoWakeupPlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\BLEScalePlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\BoilerFillPlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\HomekitPlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\LedControlPlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\MQTTPlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\ShotHistoryPlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\SmartGrindPlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\WebUIPlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\plugins\mDNSPlugin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\DefaultUI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\components\ui_comp.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\components\ui_comp_dials.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\components\ui_comp_hook.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1091371356.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1220767159.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1424216268.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1455708189.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1456692430.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1464184441.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1510335.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1594943393.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1732953241.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1765671371.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1829139226.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_1951499226.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_2044104741.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_2074354459.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_295763949.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_332059803.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_340148213.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_340686386.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_360122106.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_363557387.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_364513079.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_390988422.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_445946954.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_489054950.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_545340440.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_631115820.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_691326438.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_701340905.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_783005998.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_834125362.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_944513416.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_979979123.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_98036921.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_flowmeter_png.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_logo_png.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\images\ui_img_untitled_png.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\screens\ui_BrewScreen.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\screens\ui_GrindScreen.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\screens\ui_MenuScreen.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\screens\ui_ProfileScreen.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\screens\ui_SimpleProcessScreen.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\screens\ui_StandbyScreen.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\screens\ui_StatusScreen.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\ui.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\ui_events.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\ui_helpers.c.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\ui_theme_manager.cpp.o
+Compiling .pio\build\elecrow_rotary_21\src\display\ui\default\lvgl\ui_themes.cpp.o
+Building .pio\build\elecrow_rotary_21\bootloader.bin
+esptool.py v4.5.1
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Generating partitions .pio\build\elecrow_rotary_21\partitions.bin
+Compiling .pio\build\elecrow_rotary_21\lib902\FS\FS.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib902\FS\vfs_api.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib902\libFS.a
+Compiling .pio\build\elecrow_rotary_21\libed2\SPIFFS\SPIFFS.cpp.o
+Archiving .pio\build\elecrow_rotary_21\libed2\libSPIFFS.a
+Compiling .pio\build\elecrow_rotary_21\libc15\Wire\Wire.cpp.o
+Archiving .pio\build\elecrow_rotary_21\libc15\libWire.a
+Compiling .pio\build\elecrow_rotary_21\lib296\SPI\SPI.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib296\libSPI.a
+Compiling .pio\build\elecrow_rotary_21\lib442\FFat\FFat.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib442\libFFat.a
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLE2904.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEAddress.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEAdvertisedDevice.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEAdvertising.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEBeacon.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLECharacteristic.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEClient.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEDescriptor.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEDevice.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEEddystoneTLM.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEEddystoneURL.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEExtAdvertising.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEHIDDevice.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLERemoteCharacteristic.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLERemoteDescriptor.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLERemoteService.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEScan.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLESecurity.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEServer.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEService.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEUUID.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\NimBLEUtils.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\esp_port\esp-hci\src\esp_nimble_hci.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\esp_port\port\src\esp_nimble_mem.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\aes_decrypt.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\aes_encrypt.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\cbc_mode.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\ccm_mode.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\cmac_mode.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\ctr_mode.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\ctr_prng.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\ecc.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\ecc_dh.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\ecc_dsa.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\ecc_platform_specific.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\hmac.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\hmac_prng.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\sha256.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\ext\tinycrypt\src\utils.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_adv.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_conn.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_conn_hci.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_ctrl.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_dtm.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_hci.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_hci_ev.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_iso.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_rand.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_resolv.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_rfmgmt.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_scan.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_sched.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_supp_cmd.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_sync.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_trace.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_utils.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\controller\src\ble_ll_whitelist.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\drivers\nrf51\src\ble_hw.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\drivers\nrf51\src\ble_phy.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\drivers\nrf52\src\ble_hw.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\drivers\nrf52\src\ble_phy.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\drivers\nrf52\src\ble_phy_trace.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\access.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\adv.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\aes-ccm.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\app_keys.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\beacon.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\cdb.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\cfg.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\cfg_cli.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\cfg_srv.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\crypto.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\friend.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\glue.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\health_cli.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\health_srv.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\heartbeat.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\light_model.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\lpn.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\mesh.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\model_cli.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\model_srv.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\net.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\nodes.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\pb_adv.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\pb_gatt.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\prov.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\prov_device.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\provisioner.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\proxy.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\rpl.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\settings.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\shell.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\subnet.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\mesh\src\transport.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\services\ans\src\ble_svc_ans.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\services\bas\src\ble_svc_bas.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\services\dis\src\ble_svc_dis.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\services\gap\src\ble_svc_gap.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\services\gatt\src\ble_svc_gatt.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\services\ias\src\ble_svc_ias.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\services\ipss\src\ble_svc_ipss.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\services\lls\src\ble_svc_lls.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_att.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_att_clt.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_att_cmd.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_att_svr.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_eddystone.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_gap.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_gattc.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_gatts.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_gatts_lcl.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_adv.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_atomic.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_cfg.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_conn.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_flow.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_hci.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_hci_cmd.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_hci_evt.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_hci_util.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_id.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_log.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_mbuf.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_misc.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_mqueue.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_periodic_sync.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_pvcy.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_resolv.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_shutdown.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_startup.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_hs_stop.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_ibeacon.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_l2cap.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_l2cap_coc.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_l2cap_sig.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_l2cap_sig_cmd.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_monitor.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_sm.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_sm_alg.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_sm_cmd.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_sm_lgcy.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_sm_sc.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_store.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_store_util.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\src\ble_uuid.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\store\config\src\ble_store_config.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\store\config\src\ble_store_config_conf.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\store\config\src\ble_store_nvs.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\host\util\src\addr.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\nimble\transport\ram\src\ble_hci_ram.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\endian.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\hal_timer.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\hal_uart.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\mem.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\nimble_port.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\os_cputime.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\os_cputime_pwr2.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\os_mbuf.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\os_mempool.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\nimble\src\os_msys_init.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\npl\freertos\src\nimble_port_freertos.c.o
+Compiling .pio\build\elecrow_rotary_21\lib867\NimBLE-Arduino\nimble\porting\npl\freertos\src\npl_os_freertos.c.o
+Archiving .pio\build\elecrow_rotary_21\lib867\libNimBLE-Arduino.a
+Compiling .pio\build\elecrow_rotary_21\libfc5\Update\HttpsOTAUpdate.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libfc5\Update\Updater.cpp.o
+Archiving .pio\build\elecrow_rotary_21\libfc5\libUpdate.a
+Compiling .pio\build\elecrow_rotary_21\lib4d4\ble_ota_dfu\ble_ota_dfu.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib4d4\ble_ota_dfu\freertos_utils.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib4d4\libble_ota_dfu.a
+Compiling .pio\build\elecrow_rotary_21\lib855\AsyncTCP\AsyncTCP.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib855\libAsyncTCP.a
+Compiling .pio\build\elecrow_rotary_21\lib827\WiFi\WiFi.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib827\WiFi\WiFiAP.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib827\WiFi\WiFiClient.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib827\WiFi\WiFiGeneric.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib827\WiFi\WiFiMulti.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib827\WiFi\WiFiSTA.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib827\WiFi\WiFiScan.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib827\WiFi\WiFiServer.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib827\WiFi\WiFiUdp.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib827\libWiFi.a
+Compiling .pio\build\elecrow_rotary_21\lib33a\WebServer\Parsing.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib33a\WebServer\WebServer.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib33a\WebServer\detail\mimetable.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib33a\libWebServer.a
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\AsyncEventSource.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\AsyncJson.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\AsyncWebHeader.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\AsyncWebServerRequest.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\AsyncWebSocket.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\BackPort_SHA1Builder.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\ChunkPrint.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\Middleware.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\WebAuthentication.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\WebHandlers.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\WebRequest.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\WebResponses.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib49e\ESPAsyncWebServer\WebServer.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib49e\libESPAsyncWebServer.a
+Compiling .pio\build\elecrow_rotary_21\lib2f4\MQTT\MQTTClient.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib2f4\MQTT\lwmqtt\client.c.o
+Compiling .pio\build\elecrow_rotary_21\lib2f4\MQTT\lwmqtt\helpers.c.o
+Compiling .pio\build\elecrow_rotary_21\lib2f4\MQTT\lwmqtt\packet.c.o
+Compiling .pio\build\elecrow_rotary_21\lib2f4\MQTT\lwmqtt\string.c.o
+Archiving .pio\build\elecrow_rotary_21\lib2f4\libMQTT.a
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\remote_scales.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\remote_scales_plugin_registry.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\acaia.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\bookoo.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\decent.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\difluid.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\eclair.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\eureka.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\felicitaScale.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\myscale.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\timemore.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\varia.cpp.o
+Compiling .pio\build\elecrow_rotary_21\libc6b\esp-arduino-ble-scales\scales\weighmybru.cpp.o
+Archiving .pio\build\elecrow_rotary_21\libc6b\libesp-arduino-ble-scales.a
+Compiling .pio\build\elecrow_rotary_21\lib60c\DNSServer\DNSServer.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib60c\libDNSServer.a
+Compiling .pio\build\elecrow_rotary_21\libb7d\ESPmDNS\ESPmDNS.cpp.o
+Archiving .pio\build\elecrow_rotary_21\libb7d\libESPmDNS.a
+Compiling .pio\build\elecrow_rotary_21\lib292\ArduinoOTA\ArduinoOTA.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib292\libArduinoOTA.a
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\HAP.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\HKDF.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\HomeSpan.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\Network.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\SRP.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\TLV8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\Utils.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\src\extras\Blinker.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\src\extras\Pixel.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\src\extras\PwmPin.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\src\extras\RFControl.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9e1\HomeSpan\src\extras\StepperControl.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib9e1\libHomeSpan.a
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\SensorBHI260AP.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\SensorBMM150.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\SensorWireHelper.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\TouchDrvGT9895.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\TouchDrvInterface.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\BMM150\bmm150.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\BoschParse.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\bhi3.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\bhi3_multi_tap.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\bhy2.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\bhy2_bsec.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\bhy2_head_tracker.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\bhy2_hif.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\bhy2_klio.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\bhy2_parse.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\bhy2_swim.c.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\common\bosch_interfaces.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\bosch\common\common.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\platform\esp_arduino.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\touch\TouchClassCST226.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\touch\TouchClassCST816.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib16d\SensorLib\touch\TouchDrvCST92xx.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib16d\libSensorLib.a
+Compiling .pio\build\elecrow_rotary_21\lib9f2\Adafruit BusIO\Adafruit_BusIO_Register.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9f2\Adafruit BusIO\Adafruit_GenericDevice.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9f2\Adafruit BusIO\Adafruit_I2CDevice.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib9f2\Adafruit BusIO\Adafruit_SPIDevice.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib9f2\libAdafruit BusIO.a
+Compiling .pio\build\elecrow_rotary_21\lib3a1\Adafruit PCF8574\Adafruit_PCF8574.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib3a1\Adafruit PCF8574\Adafruit_PCF8575.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib3a1\libAdafruit PCF8574.a
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\Arduino_DataBus.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\Arduino_G.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\Arduino_GFX.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\Arduino_GFX_Library.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\Arduino_TFT.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\Arduino_TFT_18bit.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\canvas\Arduino_Canvas.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\canvas\Arduino_Canvas_3bit.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\canvas\Arduino_Canvas_Indexed.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\canvas\Arduino_Canvas_Mono.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_AVRPAR16.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_AVRPAR8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_DUEPAR16.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32LCD16.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32LCD8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32PAR16.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32PAR16Q.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32PAR16QQ.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32PAR8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32PAR8Q.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32PAR8QQ.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32PAR8QQQ.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32QSPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32RGBPanel.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32S2PAR16.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32S2PAR16Q.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32S2PAR8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32S2PAR8Q.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32SPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP32SPIDMA.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_ESP8266SPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_HWSPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_NRFXSPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_RPiPicoPAR16.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_RPiPicoPAR8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_RPiPicoSPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_RTLPAR8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_STM32PAR8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_SWPAR16.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_SWPAR8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_SWSPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_UNOPAR8.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_Wire.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_XCA9554SWSPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_XL9535SWSPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\databus\Arduino_mbedSPI.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_GC9106.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_GC9107.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_GC9A01.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_HX8347C.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_HX8347D.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_HX8352C.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_HX8357A.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_HX8357B.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_HX8369A.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9225.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9331.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9341.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9342.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9481_18bit.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9486.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9486_18bit.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9488.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9488_18bit.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9488_3bit.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ILI9806.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_JBT6K71.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_JD9613.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_NT35310.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_NT35510.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_NT39125.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_NV3041A.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_OTM8009A.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_R61529.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_RGB_Display.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_RM67162.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_SEPS525.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_SH1106.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_SSD1283A.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_SSD1331.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_SSD1351.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ST7735.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ST7789.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_ST7796.cpp.o
+Compiling .pio\build\elecrow_rotary_21\lib145\GFX Library for Arduino\display\Arduino_WEA2012.cpp.o
+Archiving .pio\build\elecrow_rotary_21\lib145\libGFX Library for Arduino.a
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_disp.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_event.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_group.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_indev.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_indev_scroll.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_obj.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_obj_class.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_obj_draw.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_obj_pos.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_obj_scroll.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_obj_style.c.o
+Compiling .pio\build\elecrow_rotary_21\lib90a\lvgl\core\lv_obj_style_gen.c.o
+

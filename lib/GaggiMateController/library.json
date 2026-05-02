@@ -1,0 +1,30 @@
+{
+  "name": "GaggiMateController",
+  "keywords": "GaggiMate Controller Lib",
+  "description": "GaggiMate Controller Lib",
+  "repository":
+  {
+    "type": "email",
+    "url": "mail@gaggimate.eu"
+  },
+  "version": "1.0.0",
+  "exclude": "doc",
+  "frameworks": "arduino",
+  "platforms": ["esp32"],
+  "dependencies": {
+    "FS": "*",
+    "SPIFFS": "*",
+    "ble_ota_dfu": "file://lib/ble_ota_dfu",
+    "NimBLEComm": "file://lib/NimBLEComm",
+    "h2zero/NimBLE-Arduino": "^1.4.0",
+    "robtillaart/MAX31855": "^0.6.1",
+    "bblanchon/ArduinoJson": "^7.2.1",
+    "PSM": "https://github.com/gaggimate/PSM.Library.git",
+    "robtillaart/ADS1X15": "^0.5.2",
+    "Wire": "*",
+    "NayrodPID": "file://lib/NayrodPID",
+    "robtillaart/PCA9634": "0.4.1",
+    "PWFusion_VL53L3C": "https://github.com/PlayingWithFusion/PWFusion_VL53L3C",
+    "pololu/VL53L0X": "^1.3.1"
+  }
+}

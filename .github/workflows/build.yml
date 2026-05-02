@@ -1,0 +1,86 @@
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+name: Build
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-tags: true
+          fetch-depth: 0
+          submodules: 'recursive'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PlatformIO Core
+        run: pip install --upgrade platformio
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json
+      - name: Add version
+        run: |
+          mkdir -p out
+          git tag -d nightly
+          git describe --tags --dirty > out/version.txt
+      - name: Build Web
+        run: ./scripts/build_spiffs.sh
+      - name: Build controller
+        run: |
+          pio run -e controller
+          mv .pio/build/controller/firmware.bin out/board-firmware.bin
+          mv .pio/build/controller/partitions.bin out/board-partitions.bin
+          mv .pio/build/controller/bootloader.bin out/board-bootloader.bin
+      - name: Build display
+        run: |
+          pio run -e display
+          mv .pio/build/display/firmware.bin out/display-firmware.bin
+          mv .pio/build/display/partitions.bin out/display-partitions.bin
+          mv .pio/build/display/bootloader.bin out/display-bootloader.bin
+      - name: Build headless
+        run: |
+          pio run -e display-headless
+          mv .pio/build/display-headless/firmware.bin out/display-headless-firmware.bin
+          mv .pio/build/display-headless/partitions.bin out/display-headless-partitions.bin
+          mv .pio/build/display-headless/bootloader.bin out/display-headless-bootloader.bin
+      - name: Build display FS
+        run: |
+          pio run -t buildfs -e display
+          cp .pio/build/display/spiffs.bin out/display-filesystem.bin
+          cp .pio/build/display/spiffs.bin out/display-headless-filesystem.bin
+      - name: Archive Firmware Files
+        uses: actions/upload-artifact@v4
+        with:
+          name: gaggimate-firmware
+          path: "out/*"
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Firmware Files
+        uses: actions/download-artifact@v4
+        with:
+          name: gaggimate-firmware
+          path: release
+      - name: Release Firmware
+        uses: ncipollo/release-action@bcfe5470707e8832e12347755757cec0eb3c22af
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          artifacts: release/*.bin
+          generateReleaseNotes: true
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}

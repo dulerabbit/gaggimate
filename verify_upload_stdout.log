@@ -1,0 +1,231 @@
+Processing elecrow_rotary_21 (platform: espressif32 @ 6.5.0; board: esp32-s3-devkitc-1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+[pio] Forced num_jobs=1 for stable build/upload
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.5.0) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20014.231204 (2.0.14) 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - tool-mkfatfs @ 2.0.1 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 57 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- FS @ 2.0.0
+|-- SPIFFS @ 2.0.0
+|-- Wire @ 2.0.0
+|-- SPI @ 2.0.0
+|-- ble_ota_dfu @ 1.0.0
+|-- NimBLE-Arduino @ 1.4.3
+|-- ESPAsyncWebServer @ 3.9.1+sha.30a4976
+|-- ArduinoJson @ 7.4.3
+|-- MQTT @ 2.5.2
+|-- esp-arduino-ble-scales @ 0.0.0+20260407000732.sha.46bae8c
+|-- HomeSpan @ 1.9.1
+|-- SensorLib @ 0.2.3
+|-- Adafruit PCF8574 @ 1.1.2
+|-- GFX Library for Arduino @ 1.4.0
+|-- lvgl @ 8.3.11
+|-- SD_MMC @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- HTTPClient @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- NimBLEComm @ 1.0.0
+|-- OTA
+|-- Preferences @ 2.0.0
+Building in release mode
+Retrieving maximum program size .pio\build\elecrow_rotary_21\firmware.elf
+Checking size .pio\build\elecrow_rotary_21\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  22.7% (used 74336 bytes from 327680 bytes)
+Flash: [========  ]  76.1% (used 4986809 bytes from 6553600 bytes)
+Configuring upload protocol...
+AVAILABLE: cmsis-dap, esp-bridge, esp-builtin, esp-prog, espota, esptool, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa
+CURRENT: upload_protocol = esptool
+Looking for upload port...
+Using manually specified: COM4
+Uploading .pio\build\elecrow_rotary_21\firmware.bin
+esptool.py v4.5.1
+Serial port COM4
+Connecting...
+Chip is ESP32-S3 (revision v0.2)
+Features: WiFi, BLE
+Crystal is 40MHz
+MAC: 1c:db:d4:b3:54:44
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00003fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Flash will be erased from 0x0000e000 to 0x0000ffff...
+Flash will be erased from 0x00010000 to 0x004d1fff...
+Compressed 15104 bytes to 10401...
+Writing at 0x00000000... (100 %)
+Wrote 15104 bytes (10401 compressed) at 0x00000000 in 0.3 seconds (effective 478.4 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 146...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (146 compressed) at 0x00008000 in 0.0 seconds (effective 516.9 kbit/s)...
+Hash of data verified.
+Compressed 8192 bytes to 47...
+Writing at 0x0000e000... (100 %)
+Wrote 8192 bytes (47 compressed) at 0x0000e000 in 0.1 seconds (effective 712.6 kbit/s)...
+Hash of data verified.
+Compressed 4987424 bytes to 1502594...
+Writing at 0x00010000... (1 %)
+Writing at 0x00025e01... (2 %)
+Writing at 0x000d4505... (3 %)
+Writing at 0x0012b937... (4 %)
+Writing at 0x001cb90d... (5 %)
+Writing at 0x0023bec0... (6 %)
+Writing at 0x002a0d96... (7 %)
+Writing at 0x002aa429... (8 %)
+Writing at 0x002b21d7... (9 %)
+Writing at 0x002bafdb... (10 %)
+Writing at 0x002c64e0... (11 %)
+Writing at 0x002d0c14... (13 %)
+Writing at 0x002d5888... (14 %)
+Writing at 0x002dac9f... (15 %)
+Writing at 0x002e1351... (16 %)
+Writing at 0x002ebf9a... (17 %)
+Writing at 0x002f048a... (18 %)
+Writing at 0x002f5e27... (19 %)
+Writing at 0x002ff7fa... (20 %)
+Writing at 0x00309928... (21 %)
+Writing at 0x00313d9a... (22 %)
+Writing at 0x00327aa2... (23 %)
+Writing at 0x00339fba... (25 %)
+Writing at 0x0033f8ba... (26 %)
+Writing at 0x0034589f... (27 %)
+Writing at 0x0034b870... (28 %)
+Writing at 0x003524c5... (29 %)
+Writing at 0x00358af2... (30 %)
+Writing at 0x0035efb9... (31 %)
+Writing at 0x003664f5... (32 %)
+Writing at 0x0036d59d... (33 %)
+Writing at 0x00373475... (34 %)
+Writing at 0x00379170... (35 %)
+Writing at 0x0037ebdb... (36 %)
+Writing at 0x00384a55... (38 %)
+Writing at 0x0038a69f... (39 %)
+Writing at 0x0039033a... (40 %)
+Writing at 0x00396308... (41 %)
+Writing at 0x0039d886... (42 %)
+Writing at 0x003a2fc2... (43 %)
+Writing at 0x003a8c06... (44 %)
+Writing at 0x003ae628... (45 %)
+Writing at 0x003b419e... (46 %)
+Writing at 0x003b95bd... (47 %)
+Writing at 0x003beac9... (48 %)
+Writing at 0x003c4579... (50 %)
+Writing at 0x003c9c42... (51 %)
+Writing at 0x003d03ce... (52 %)
+Writing at 0x003d6217... (53 %)
+Writing at 0x003dbce2... (54 %)
+Writing at 0x003e12e1... (55 %)
+Writing at 0x003e6ccc... (56 %)
+Writing at 0x003ebf8b... (57 %)
+Writing at 0x003f0e24... (58 %)
+Writing at 0x003f5e1d... (59 %)
+Writing at 0x003fad86... (60 %)
+Writing at 0x003ffce1... (61 %)
+Writing at 0x004050a8... (63 %)
+Writing at 0x00409f6e... (64 %)
+Writing at 0x0040f39b... (65 %)
+Writing at 0x00414eb6... (66 %)
+Writing at 0x0041a41f... (67 %)
+Writing at 0x0041f8d5... (68 %)
+Writing at 0x00424f1b... (69 %)
+Writing at 0x0042a35c... (70 %)
+Writing at 0x0042f357... (71 %)
+Writing at 0x0043415a... (72 %)
+Writing at 0x004393a7... (73 %)
+Writing at 0x0043f1d1... (75 %)
+Writing at 0x00444631... (76 %)
+Writing at 0x00449956... (77 %)
+Writing at 0x0044e698... (78 %)
+Writing at 0x004537fc... (79 %)
+Writing at 0x00458777... (80 %)
+Writing at 0x0045dc32... (81 %)
+Writing at 0x00462f55... (82 %)
+Writing at 0x004689e2... (83 %)
+Writing at 0x0046e221... (84 %)
+Writing at 0x00474acc... (85 %)
+Writing at 0x0047b175... (86 %)
+Writing at 0x0048277c... (88 %)
+Writing at 0x0048ac74... (89 %)
+Writing at 0x0049144a... (90 %)
+Writing at 0x00497210... (91 %)
+Writing at 0x0049c6a9... (92 %)
+Writing at 0x004a3f9a... (93 %)
+Writing at 0x004ab7e3... (94 %)
+Writing at 0x004b4288... (95 %)
+Writing at 0x004bc0bc... (96 %)
+Writing at 0x004c26d2... (97 %)
+Writing at 0x004c7f37... (98 %)
+Writing at 0x004cd589... (100 %)
+Wrote 4987424 bytes (1502594 compressed) at 0x00010000 in 29.3 seconds (effective 1359.5 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+
+Please build project in debug configuration to get more details about an exception.
+See https://docs.platformio.org/page/projectconf/build_configurations.html
+
+
+--- Terminal on COM4 | 115200 8-N-1
+--- Available filters and text transformations: debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+
+Please build project in debug configuration to get more details about an exception.
+See https://docs.platformio.org/page/projectconf/build_configurations.html
+
+
+
+Please build project in debug configuration to get more details about an exception.
+See https://docs.platformio.org/page/projectconf/build_configurations.html
+
+
+
+Please build project in debug configuration to get more details about an exception.
+See https://docs.platformio.org/page/projectconf/build_configurations.html
+
+
+
+Please build project in debug configuration to get more details about an exception.
+See https://docs.platformio.org/page/projectconf/build_configurations.html
+
+
+
+Please build project in debug configuration to get more details about an exception.
+See https://docs.platformio.org/page/projectconf/build_configurations.html
+
+
+01:19:25.454 > Data Transfer Failure !!!
+01:19:25.454 > [  3394][E][Wire.cpp:513] requestFrom(): i2cRead returned Error -1
+01:19:25.454 > Data write failure!!!
+01:19:25.454 > Failed to set GPIO!!!
+01:19:25.454 > [  4241][I][AutoWakeupPlugin.cpp:17] setup(): [AutoWakeupPlugin] Auto-wakeup plugin initialized
+01:19:25.454 > [  4417][I][Controller.cpp:256] setupWifi(): [Controller] Started WiFi AP GaggiMate
+01:19:25.454 > [  4420][I][WebUIPlugin.cpp:244] start(): [WebUIPlugin] Started webserver
+01:19:25.454 > [  4421][I][WebUIPlugin.cpp:249] start(): [WebUIPlugin] Started catchall DNS for captive portal
+01:19:25.454 > [  5892][I][Settings.cpp:431] doSave(): [Settings] Saving settings
+
+Please build project in debug configuration to get more details about an exception.
+See https://docs.platformio.org/page/projectconf/build_configurations.html
+
+
